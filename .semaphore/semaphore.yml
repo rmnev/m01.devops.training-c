@@ -12,7 +12,7 @@ blocks:
           commands:
             - checkout
             - make app
-            - echo hello
+            - artifact push workflow app
   - name: Tests
     task:
       prologue:
@@ -21,6 +21,7 @@ blocks:
       jobs:
         - name: Run app
           commands:
+            - artifact pull workflow app
             - chmod +x app
             - echo hello
             - ./app
